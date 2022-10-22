@@ -15,7 +15,8 @@ import d$todo from '@/stores/dashboard/todo.js';
                 } catch(e) {
                     console.error('methods getList error', r);
                 }
-            }
+            },
+            ...mapActions(d$todo, ['a$del']),
         },
         async created() {
             await this.getList();
@@ -89,7 +90,7 @@ import d$todo from '@/stores/dashboard/todo.js';
                                                 -->
 
                                                 <button type="button" class="btn btn-warning text-xs me-1 col-md-auto">Edit</button>
-                                                <button type="button" class="btn btn-danger text-xs col-3 col-md-auto me-2">Delete</button>
+                                                <button type="button" @click="a$del(item.id)" class="btn btn-danger text-xs col-3 col-md-auto me-2">Delete</button>
                                             </td>
                                         </tr>
                                     </tbody>

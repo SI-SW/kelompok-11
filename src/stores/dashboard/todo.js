@@ -15,7 +15,18 @@ const d$todo = defineStore({
                 console.error('actions todo list error', e);
                 throw e;
             }
-        }
+        },
+        async a$del(id) {
+            try {
+              await s$todo.del(id);
+              const { data } = await s$todo.list();
+              console.log(data);
+              this.list = data;
+            } catch (e) {
+              console.error('actions todo list error', e);
+              throw e;
+            }
+        },
     },
     getters: {
         g$list: ({ list }) => list,
