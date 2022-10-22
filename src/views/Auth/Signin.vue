@@ -96,8 +96,8 @@ export default {
   data: () => ({
     //Input
     input: {
-      username: '',
-      password: '',
+      username: 'a@example.com',
+      password: 'admin123',
     },
   }),
   methods: {
