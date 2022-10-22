@@ -24,9 +24,9 @@ import d$todo from '@/stores/dashboard/todo.js';
 
 <template>
     <div> 
-        <div class="py-4 container-fluid">
+        <div class="py-4 px-3 container-fluid">
             <div class=" row">
-                <div class="col-12">
+                <div class="col-9 position-absolute end-0 me-5">
                     <div class="card">
                         <div class="card-header pb-0">
                             <h6>Todo List Table</h6>
@@ -88,7 +88,7 @@ import d$todo from '@/stores/dashboard/todo.js';
                                                 -->
 
                                                 <button type="button" class="btn btn-warning text-xs me-1 col-md-auto">Edit</button>
-                                                <button type="button" class="btn btn-danger text-xs col-3 col-md-auto">Delete</button>
+                                                <button type="button" class="btn btn-danger text-xs col-3 col-md-auto me-2">Delete</button>
                                             </td>
                                         </tr>
                                     </tbody>
