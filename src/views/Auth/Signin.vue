@@ -22,12 +22,12 @@
                   <p class="mb-0">Enter your email and password to sign in</p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
+                  <form @submit.prevent="submitLogin">
                     <div class="mb-3">
-                      <argon-input type="email" placeholder="Email" name="email" size="lg" />
+                      <argon-input v-model="input.username" type="email" placeholder="Email" name="email" size="lg" />
                     </div>
                     <div class="mb-3">
-                      <argon-input type="password" placeholder="Password" name="password" size="lg" />
+                      <argon-input v-model="input.password" type="password" placeholder="Password" name="password" size="lg" />
                     </div>
                     <argon-switch id="rememberMe">Remember me</argon-switch>
 
@@ -38,6 +38,7 @@
                         color="success"
                         fullWidth
                         size="lg"
+                        type="submit"
                       >Sign in</argon-button>
                     </div>
                   </form>
@@ -58,9 +59,7 @@
             >
               <div
                 class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
-                style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
-          background-size: cover;"
-              >
+                style="background-image:url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');background-size:cover;">
                 <span class="mask bg-gradient-success opacity-6"></span>
                 <h4
                   class="mt-5 text-white font-weight-bolder position-relative"
@@ -78,6 +77,8 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia';
+import d$auth from '@/stores/auth';
 import Navbar from "@/examples/PageLayout/Navbar.vue";
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonSwitch from "@/components/ArgonSwitch.vue";
@@ -91,6 +92,24 @@ export default {
     ArgonInput,
     ArgonSwitch,
     ArgonButton,
+  },
+  data: () => ({
+    //Input
+    input: {
+      username: '',
+      password: '',
+    },
+  }),
+  methods: {
+    ...mapActions(d$auth, ['a$login']),
+    async submitLogin() {
+      try {
+        await this.a$login({ ...this.input });
+        this.$router.replace({name: 'Default'});
+      } catch (e) {
+        console.error(e);
+      }
+    },
   },
   created() {
     this.$store.state.hideConfigButton = true;
