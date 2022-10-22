@@ -22,9 +22,23 @@ const dashboard = {
         },
         {
             path: "todo",
-            name: "Todo",
-            component: () => import('@/views/Dashboard/Todo.vue'),
-            meta: { auth: true }
+            children:[
+                {
+                    path: '',
+                    name: 'Todo',
+                    // route level code-splitting
+                    // this generates a separate chunk (About.[hash].js) for this route
+                    // which is lazy-loaded when the route is visited.
+                    component: () => import('@/views/Dashboard/Todo.vue'),
+                    meta: { auth: true }
+                },
+                {
+                    path: "addtodo",
+                    name: "Add To Do",
+                    component: () => import('@/views/Dashboard/AddToDo.vue'),
+                    meta: { auth: true }
+                },
+            ]
         },
         {
             path: "profile",

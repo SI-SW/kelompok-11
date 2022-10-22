@@ -1,5 +1,6 @@
 <script>
 import { mapActions, mapState } from 'pinia'
+import {RouterLink} from 'vue-router'
 import d$todo from '@/stores/dashboard/todo.js'; 
     export default {
         name: 'Todo',
@@ -32,7 +33,7 @@ import d$todo from '@/stores/dashboard/todo.js';
                             <h6>Todo List Table</h6>
                         </div>
                         <div class="position-absolute end-0 me-5 mt-4">
-                            <button type="button" class="btn btn-primary col-3 col-md-auto">Add</button>
+                            <RouterLink :to="{name:'Add To Do'}" class="btn btn-primary col-3 col-md-auto">Add</RouterLink>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
