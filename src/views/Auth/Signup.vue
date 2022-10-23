@@ -96,10 +96,10 @@
               </div>
             </div>
             <div class="card-body">
-              <form role="form">
-                <argon-input type="text" placeholder="Name" aria-label="Name" />
-                <argon-input type="email" placeholder="Email" aria-label="Email" />
-                <argon-input type="password" placeholder="Password" aria-label="Password" />
+              <form role="form" @submit.prevent="submitRegister">
+                <argon-input type="text" placeholder="Name" aria-label="Name" v-model="input.name"/>
+                <argon-input type="email" placeholder="Email" aria-label="Email" v-model="input.email"/>
+                <argon-input type="password" placeholder="Password" aria-label="Password" v-model="input.password" />
                 <argon-checkbox checked>
                   <label class="form-check-label" for="flexCheckDefault">
                     I agree the

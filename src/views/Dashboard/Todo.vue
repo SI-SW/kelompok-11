@@ -4,18 +4,11 @@ import {RouterLink} from 'vue-router'
 import d$todo from '@/stores/dashboard/todo.js'; 
     export default {
         name: 'Todo',
-        data: () => ({
-        input: {
-        name: "",
-        description: "",
-        status: "",
-      },
-  }),
         computed: {
-            ...mapState(d$todo, ['g$list', "a$add"]),
+            ...mapState(d$todo, ['g$list']),
         },
         methods: {
-            ...mapActions(d$todo, ['a$list', "a$add"]),
+            ...mapActions(d$todo, ['a$list']),
             async getList() {
                 try {
                     await this.a$list();
@@ -96,8 +89,10 @@ import d$todo from '@/stores/dashboard/todo.js';
                                                 data-original-title="Edit user"
                                                 >Edit</a>
                                                 -->
-
-                                                <RouterLink :to="{name:'Edit To Do'}" class="btn btn-warning col-3 col-md-auto">Edit</RouterLink>
+                                                <!--:to="'/edittodo/' + item.id"
+                                                :to="{name:'Edit To Do'}"-->
+                                               
+                                                <RouterLink  :to="{name:'Edit To Do'}" class="btn btn-warning col-3 col-md-auto me-3">Edit</RouterLink>
                                                 <button type="button" @click="a$del(item.id)" class="btn btn-danger text-xs col-3 col-md-auto me-2">Delete</button>
                                             </td>
                                         </tr>
@@ -111,3 +106,5 @@ import d$todo from '@/stores/dashboard/todo.js';
         </div>
     </div>
 </template>
+<style>
+</style>

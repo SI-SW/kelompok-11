@@ -39,10 +39,12 @@ const dashboard = {
                     meta: { auth: true }
                 },
                 {
-                    path: "edittodo",
+                    path: 'edittodo',
                     name: "Edit To Do",
                     component: () => import('@/views/Dashboard/EditToDo.vue'),
                     meta: { auth: true }
+                    //component: () => import('@/views/Dashboard/EditToDo.vue'),
+                    //meta: { auth: true }
                 },
             ]
         },
