@@ -9,6 +9,13 @@
         </sidenav-item>
       </li>
       <li class="nav-item">
+        <sidenav-item url="/dashboard/todo" :class="getRoute() === 'todo' ? 'active' : ''" :navText="this.$store.state.isRTL ? 'لوحة القيادة' : 'Todo'">
+          <template v-slot:icon>
+            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
         <sidenav-item url="/dashboard/tables" :class="getRoute() === 'tables' ? 'active' : ''" :navText="this.$store.state.isRTL ? 'الجداول' : 'Tables'">
           <template v-slot:icon>
             <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
