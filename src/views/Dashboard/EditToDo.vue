@@ -4,7 +4,7 @@
             <div class="col-9 position-absolute end-0 me-5">
                 <div class="container rounded-3">
                     <h1 class="py-4 text-center">Edit To Do</h1>
-                    <form class="container">
+                    <form class="container" @submit.prevent="editTodo">
                         <div class="mb-3">
                             <label>Nama:</label>
                             <input class="form-control" type="text" v-model="input.name"/>
@@ -28,9 +28,15 @@
 <script>
     import { mapActions } from 'pinia';
     import d$todo from '@/stores/dashboard/todo';
-
+    import { useRoute } from 'vue-router';
 
     export default {
+        setup() {
+            const route = useRoute();
+            return {
+                id: route.params.id,
+            };
+        },
         data: () => ({
             //Input
             input: {
@@ -40,21 +46,20 @@
             }
         }),
         methods: {
-            // ...mapActions(d$todo, ['editlist']),
-            /*
-            async editTodo() {
-                try {
-                    await this.editlist(this.g$list.id);
-                    this.$router.replace({name: 'Todo'});
-                    console.log(this.input);
-                } catch (e) {
-                    console.error(e);
-                    console.log(this.input);
-                }
+            ...mapActions(d$todo, ['a$editlist']),
+        async editTodo() {
+            try {
+                await this.a$editlist(this.id, this.input);
+                this.$router.replace({ name: 'Todo' });
+                console.log(this.input);
+                console.log(this.id);
+            } catch (e) {
+                console.error(e);
+                console.log(this.input);
             }
-            */
-        }
-    }
+        },
+    },
+};
 </script>
 
 <style>
