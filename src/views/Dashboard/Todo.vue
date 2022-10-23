@@ -92,7 +92,15 @@ import d$todo from '@/stores/dashboard/todo.js';
                                                 <!--:to="'/edittodo/' + item.id"
                                                 :to="{name:'Edit To Do'}"-->
                                                
-                                                <RouterLink  :to="{name:'Edit To Do'}" class="btn btn-warning col-3 col-md-auto me-3">Edit</RouterLink>
+                                                <RouterLink
+                                                    :to="{
+                                                        name: 'Edit To Do',
+                                                        params: {
+                                                            id: item.id,
+                                                        },
+                                                    }"
+                                                    class="btn btn-warning col-3 col-md-auto me-3"
+                                                    >Edit</RouterLink>
                                                 <button type="button" @click="a$del(item.id)" class="btn btn-danger text-xs col-3 col-md-auto me-2">Delete</button>
                                             </td>
                                         </tr>

@@ -17,13 +17,14 @@ const d$todo = defineStore({
                 throw e;
             }
         },
-        async editlist(id) {
+        async a$editlist(id, body) {
             try {
-                await s$todo.edit(id);
-            } catch(e) {
-                console.error('actions todo list error', e);
-                console.log(body);
-                throw e;
+              const data = await s$todo.edit(id, body);
+              console.log('EDITT=', data);
+            } catch (e) {
+              console.error('actions todo list error', e);
+              console.log(body);
+              throw e;
             }
         },
         async a$list() {
