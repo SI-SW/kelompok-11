@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+
 import * as s$todo from '@/services/todo';
 
 const d$todo = defineStore({
@@ -14,6 +15,14 @@ const d$todo = defineStore({
             } catch(e) {
                 console.error('actions todo list error', e);
                 throw e;
+            }
+        },
+        async a$add(body) {
+            try {
+              await s$todo.add(body);
+            } catch (e) {
+              console.error('actions todo add error', e);
+              throw e;
             }
         },
         async a$del(id) {

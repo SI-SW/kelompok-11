@@ -4,11 +4,18 @@ import {RouterLink} from 'vue-router'
 import d$todo from '@/stores/dashboard/todo.js'; 
     export default {
         name: 'Todo',
+        data: () => ({
+        input: {
+        name: "",
+        description: "",
+        status: "",
+      },
+  }),
         computed: {
-            ...mapState(d$todo, ['g$list']),
+            ...mapState(d$todo, ['g$list', "a$add"]),
         },
         methods: {
-            ...mapActions(d$todo, ['a$list']),
+            ...mapActions(d$todo, ['a$list', "a$add"]),
             async getList() {
                 try {
                     await this.a$list();
