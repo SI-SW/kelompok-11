@@ -43,6 +43,7 @@ import d$todo from '@/stores/dashboard/todo.js';
                         <div class="position-absolute end-0 me-5 mt-4">
                             <RouterLink :to="{name:'Add To Do'}" class="btn btn-primary col-3 col-md-auto">Add</RouterLink>
                         </div>
+                        
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table align-items-center mb-0">
@@ -96,7 +97,7 @@ import d$todo from '@/stores/dashboard/todo.js';
                                                 >Edit</a>
                                                 -->
 
-                                                <button type="button" class="btn btn-warning text-xs me-1 col-md-auto">Edit</button>
+                                                <RouterLink :to="{name:'Edit To Do'}" class="btn btn-warning col-3 col-md-auto">Edit</RouterLink>
                                                 <button type="button" @click="a$del(item.id)" class="btn btn-danger text-xs col-3 col-md-auto me-2">Delete</button>
                                             </td>
                                         </tr>
