@@ -110,7 +110,7 @@
                   </label>
                 </argon-checkbox>
                 <div class="text-center">
-                  <argon-button fullWidth color="dark" variant="gradient" class="my-4 mb-2">Sign up</argon-button>
+                  <argon-button fullWidth color="dark" variant="gradient" class="my-4 mb-2" type="submit">Sign up</argon-button>
                 </div>
                 <p class="text-sm mt-3 mb-0">
                   Already have an account?
@@ -136,9 +136,30 @@ import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonCheckbox from "@/components/ArgonCheckbox.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
 const body = document.getElementsByTagName("body")[0];
+import { mapActions } from 'pinia';
+import d$auth from '@/stores/auth';
 
 export default {
   name: "signin",
+  data: () => ({
+    //Input
+    input: {
+      name: '',
+      email: '',
+      password: ''
+    },
+  }),
+  methods: {
+    ...mapActions(d$auth, ['a$register']),
+    async submitRegister() {
+      try {
+        await this.a$register({ ...this.input });
+        this.$router.replace({name: 'Default'});
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  },
   components: {
     Navbar,
     AppFooter,

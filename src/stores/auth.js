@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import * as s$auth from "@/services/auth";
-import { certCookies, setCookies } from "@/plugins/cookies";
+import { certCookies, setCookies, delCookies } from "@/plugins/cookies";
 
 const d$auth = defineStore({
     id: 'auth',
@@ -37,22 +37,11 @@ const d$auth = defineStore({
         async a$register(body) {
             try {
                 const { data } = await s$auth.register(body);
-                setCookies('CERT', data.token, { datetime: data.expiresAt });
-                this.a$setUser();
+                // this.a$setUser();
                 return true;
             } catch ({ error, message }) {
                 throw message ?? error;
             }
-        },
-        async a$login(body) {
-          try {
-            const { data } = await s$auth.login(body);
-            setCookies("CERT", data.token, { datetime: data.expiresAt });
-            this.a$setUser();
-            return true;
-          } catch ({ error, message }) {
-            throw message ?? error;
-          }
         },
         async a$logout() {
           try {

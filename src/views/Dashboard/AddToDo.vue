@@ -34,9 +34,9 @@ import d$todo from '@/stores/dashboard/todo';
         data: () => ({
             //Input
             input: {
-                name: 'add todo',
-                category: 'pending',
-                description: 'test add todo'
+                name: '',
+                category: '',
+                description: ''
             }
         }),
         methods: {

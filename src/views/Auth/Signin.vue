@@ -47,7 +47,7 @@
                   <p class="mx-auto mb-4 text-sm">
                     Don't have an account?
                     <a
-                      href="javascript:;"
+                      href="/auth/signup"
                       class="text-success text-gradient font-weight-bold"
                     >Sign up</a>
                   </p>
@@ -96,8 +96,8 @@ export default {
   data: () => ({
     //Input
     input: {
-      username: 'a@example.com',
-      password: 'admin123',
+      username: 'kelompok11@gmail.com',
+      password: 'kelompok11yahoo',
     },
   }),
   methods: {
